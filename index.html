@@ -1,79 +1,36 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DocuClear – Understand any document before you sign</title>
-<style>
-:root{--bg:#f6f7fb;--sf:#fff;--tx:#0f1530;--mu:#5a6385;--br:#e2e5f0;--pr:#4f46e5;--pr2:#6366f1;--prt:#eef0ff;--rd:#dc2626;--rdt:#fee2e2;--am:#d97706;--amt:#fef3c7;--gn:#16a34a;--gnt:#dcfce7;--dk:#0b1030;--sh:0 10px 40px rgba(40,50,120,.10);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e1f;--sf:#151933;--tx:#eceefb;--mu:#9aa2c8;--br:#2a2f52;--pr:#8e92ff;--prt:#1e2350;--rdt:#4a1d24;--amt:#4a3515;--gnt:#14391f;--dk:#060818;--sh:0 10px 40px rgba(0,0,0,.45);color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0b0e1f;--sf:#151933;--tx:#eceefb;--mu:#9aa2c8;--br:#2a2f52;--pr:#8e92ff;--prt:#1e2350;--rdt:#4a1d24;--amt:#4a3515;--gnt:#14391f;--dk:#060818;--sh:0 10px 40px rgba(0,0,0,.45);color-scheme:dark}
-*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}h1,h2,h3,h4{line-height:1.15;margin:0 0 .5em;letter-spacing:-.025em}p{margin:0 0 1em}
-.w{max-width:1160px;margin:0 auto;padding:0 22px}.hide{display:none!important}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--sf);z-index:50}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--sf) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--br)}
-nav{display:flex;align-items:center;gap:4px;height:68px}
-.logo{font-weight:800;font-size:21px;display:flex;align-items:center;gap:10px;margin-right:auto;letter-spacing:-.03em}
-.lg{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#4338ca,#7c3aed);display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:0 4px 14px rgba(79,70,229,.4)}
-nav a.l{padding:8px 14px;border-radius:8px;color:var(--mu);font-weight:500;font-size:15px}nav a.l:hover,nav a.on{color:var(--pr);background:var(--prt)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:15px;padding:11px 22px;border-radius:10px;background:linear-gradient(135deg,#4f46e5,#6d5ef0);color:#fff;box-shadow:0 6px 18px rgba(79,70,229,.28);transition:.15s}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.07)}.btn.o{background:transparent;color:var(--pr);border:1.5px solid var(--br);box-shadow:none}.btn.o:hover{border-color:var(--pr)}.btn.g{background:var(--prt);color:var(--pr);box-shadow:none}.btn.xl{padding:15px 30px;font-size:17px}.btn.w100{width:100%}
-.hero{padding:76px 0 70px;background:radial-gradient(900px 420px at 80% -10%,color-mix(in srgb,var(--pr2) 22%,transparent),transparent),radial-gradient(700px 400px at 0% 0%,color-mix(in srgb,#a855f7 14%,transparent),transparent)}
-.hg{display:grid;gap:44px;grid-template-columns:1.05fr .95fr;align-items:center}@media(max-width:900px){.hg{grid-template-columns:1fr}nav a.l.h{display:none}.two,.three{grid-template-columns:1fr!important}.fcols{grid-template-columns:1fr 1fr!important}.side{position:static!important;width:100%!important;flex-direction:row!important;overflow:auto}.wk{flex-direction:column}}
-.pill{display:inline-flex;gap:8px;align-items:center;background:var(--prt);color:var(--pr);font-weight:600;font-size:13px;padding:6px 14px;border-radius:99px;margin-bottom:20px}
-.hero h1{font-size:clamp(36px,5.4vw,60px)}.grad{background:linear-gradient(90deg,#4f46e5,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:19px;color:var(--mu);max-width:560px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 18px}.tick{display:flex;gap:18px;flex-wrap:wrap;color:var(--mu);font-size:14px}
-.card{background:var(--sf);border:1px solid var(--br);border-radius:18px;padding:24px;box-shadow:var(--sh)}.card h3{font-size:19px}.card p{color:var(--mu);font-size:15px;margin:0}
-.ib{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:var(--prt);margin-bottom:14px}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}.two{display:grid;gap:18px;grid-template-columns:1fr 1fr}.three{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
-.sec{padding:76px 0}.t{text-align:center;max-width:680px;margin:0 auto 42px}.t h2{font-size:clamp(28px,4vw,42px)}.t p{color:var(--mu);font-size:18px}.eb{color:var(--pr);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;background:var(--sf);border:1px solid var(--br);border-radius:18px;padding:22px;text-align:center}.stats b{font-size:30px;display:block;letter-spacing:-.03em}.stats span{color:var(--mu);font-size:14px}
-.tg{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px}.tg.r{background:var(--rdt);color:var(--rd)}.tg.a{background:var(--amt);color:var(--am)}.tg.g{background:var(--gnt);color:var(--gn)}
-.score{display:flex;align-items:center;gap:18px}.ring{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--c,var(--am)) calc(var(--v)*1%),var(--br) 0);flex:none}.ring b{width:76px;height:76px;border-radius:50%;background:var(--sf);display:grid;place-items:center;font-size:28px;font-weight:800}
-.cl{display:flex;gap:10px;padding:11px 13px;border:1px solid var(--br);border-radius:12px;margin-top:9px;font-size:14px;background:var(--bg);align-items:center}
-.dk{background:var(--dk);color:#e8eaff;border-radius:26px;padding:56px 44px}.dk p{color:#aab0d6}.dk h2{color:#fff}
-.mk{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#0003;border-radius:12px;padding:14px;line-height:1.9;color:#cfd3f5}.mk s{text-decoration:none;color:#fca5a5}.mk u{text-decoration:none;color:#86efac}
-.step{counter-increment:s}.step .ib::after{content:counter(s);font-weight:800;color:var(--pr)}
-.step .ib span{display:none}
-.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.chips div{background:var(--sf);border:1px solid var(--br);border-radius:14px;padding:14px 16px;font-size:15px;font-weight:500}.chips small{display:block;color:var(--mu);font-weight:400;font-size:13px}
-details{background:var(--sf);border:1px solid var(--br);border-radius:14px;padding:16px 20px;margin-bottom:10px}summary{font-weight:600;cursor:pointer}details p{margin:10px 0 0;color:var(--mu)}
-.price{position:relative}.price h3{font-size:22px}.price .am{font-size:42px;font-weight:800;letter-spacing:-.03em}.price ul{list-style:none;padding:0;margin:18px 0;color:var(--mu);font-size:15px}.price li{padding:5px 0}.price li::before{content:"✓ ";color:var(--gn);font-weight:700}.price.hot{border:2px solid var(--pr2)}.price.hot::before{content:"Most popular";position:absolute;top:-13px;left:24px;background:var(--pr2);color:#fff;font-size:12px;font-weight:700;padding:3px 12px;border-radius:99px}
-footer{background:var(--dk);color:#aab0d6;padding:56px 0 28px;margin-top:40px;font-size:14px}.fcols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px}footer h4{color:#fff;font-size:14px;margin-bottom:12px}footer a{display:block;padding:4px 0}footer a:hover{color:#fff}.fb{border-top:1px solid #ffffff1f;margin-top:32px;padding-top:20px;font-size:13px}
-.ph{padding:64px 0 28px;text-align:center}.ph h1{font-size:clamp(32px,5vw,48px)}.ph p{color:var(--mu);font-size:18px;max-width:640px;margin:0 auto}
-.auth{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 68px)}@media(max-width:860px){.auth{grid-template-columns:1fr}.aside{display:none}}
-.aside{background:linear-gradient(150deg,#312e81,#6d28d9);color:#fff;padding:56px;display:flex;flex-direction:column;justify-content:center}.aside h2{font-size:34px}.aside li{margin:12px 0;list-style:none}.aside ul{padding:0}
-.af{display:flex;align-items:center;justify-content:center;padding:36px 22px}.af>div{width:100%;max-width:400px}
-label.k{display:block;font-weight:600;font-size:14px;margin:14px 0 6px}
-input[type=text],input[type=email],input[type=password],select,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--br);background:var(--sf);color:var(--tx);font:inherit}input:focus,select:focus,textarea:focus{outline:2px solid var(--pr2);border-color:transparent}
-.err{color:var(--rd);font-size:14px;min-height:22px;margin:8px 0}.sw{color:var(--mu);font-size:14px;text-align:center;margin-top:18px}.sw a{color:var(--pr);font-weight:600;cursor:pointer}.or{text-align:center;color:var(--mu);font-size:13px;margin:14px 0}
-.wk{display:flex;gap:22px;padding:26px 22px;max-width:1280px;margin:0 auto}.side{width:230px;flex:none;position:sticky;top:90px;align-self:flex-start;display:flex;flex-direction:column;gap:4px}
-.side button{text-align:left;border:0;background:none;color:var(--mu);font:inherit;font-weight:500;padding:11px 14px;border-radius:10px;cursor:pointer;white-space:nowrap}.side button.on{background:var(--prt);color:var(--pr);font-weight:600}.side button:hover{color:var(--pr)}
-.main{flex:1;min-width:0}.kp{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:20px}.kp div{background:var(--sf);border:1px solid var(--br);border-radius:14px;padding:16px}.kp b{font-size:26px;display:block;letter-spacing:-.02em}.kp span{color:var(--mu);font-size:13px}
-.drop{border:2px dashed var(--pr2);background:var(--prt);border-radius:18px;padding:46px 20px;text-align:center;cursor:pointer;margin-top:14px}.drop.hv{background:var(--sf)}
-.itm{display:flex;gap:12px;padding:14px;border:1px solid var(--br);border-radius:12px;margin-bottom:10px;cursor:pointer;background:var(--bg)}.itm:hover{border-color:var(--pr2)}.ex{display:none;margin-top:8px;padding:10px 12px;background:var(--prt);border-radius:8px;font-size:14px}.itm.open .ex{display:block}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tabs button{border:1px solid var(--br);background:var(--sf);color:var(--tx);padding:7px 14px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px}.tabs button.on{background:var(--pr2);color:#fff;border-color:var(--pr2)}
-.bar{height:8px;border-radius:9px;background:var(--br);overflow:hidden;margin:16px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f46e5,#a855f7);transition:width .3s}
-.nt{font-size:13px;color:var(--mu)}input[type=range]{width:100%;accent-color:var(--pr2)}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:12px 10px;border-bottom:1px solid var(--br)}th{color:var(--mu);font-weight:600;font-size:13px}
-.chk{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:14px}.al{padding:12px 14px;border-radius:12px;font-size:14px;margin-top:10px}.al.a{background:var(--amt)}.al.r{background:var(--rdt)}
-</style></head><body>
+<title>DocuClear – Know what you’re signing before you sign it</title>
+<meta name="description" content="Upload any agreement, notice or bill. DocuClear explains it in plain English and flags risky clauses before you sign.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 <header><div class="w"><nav>
-<a class="logo" href="#"><span class="lg">✦</span>DocuClear</a>
-<a class="l h" data-r="" href="#">Home</a><a class="l h" data-r="about" href="#about">About</a><a class="l h" data-r="pricing" href="#pricing">Pricing</a>
-<a class="l" data-r="home" href="#home">My Workspace</a>
-<a class="btn" id="nLogin" href="#login" style="margin-left:8px">Log in</a><button class="btn o hide" id="nOut" style="margin-left:8px">Log out</button>
+<a class="logo" href="index.html"><span class="lg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 3h16l8 8v24a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" fill="currentColor"/><path d="M25 3v6a2 2 0 0 0 2 2h6z" fill="var(--g)" opacity=".35"/><rect x="11" y="14" width="13" height="3" rx="1.5" fill="var(--g)" opacity=".6"/><rect x="11" y="20" width="9" height="3" rx="1.5" fill="var(--g)" opacity=".6"/><circle cx="29.5" cy="29.5" r="9.5" fill="#c8f169"/><path d="M24.8 29.8l3.3 3.3 6.2-6.9" fill="none" stroke="#1d0f33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>DocuClear</a>
+<a class="l h on" href="index.html">Home</a><a class="l h" href="about.html">About</a><a class="l h" href="pricing.html">Pricing</a>
+<a class="l" href="workspace.html">My Workspace</a>
+<a class="btn" id="nLogin" href="login.html" style="margin-left:8px">Log in</a><button class="btn o hide" id="nOut" style="margin-left:8px">Log out</button>
 </nav></div></header>
-<main>
 
-<div data-p="">
+<main>
 <section class="hero"><div class="w hg"><div>
-<span class="pill">🔒 Privacy-first · Made for India</span>
-<h1>Understand any document <span class="grad">before you sign it.</span></h1>
-<p class="lead">Upload a rent agreement, job offer, loan paper or legal notice. DocuClear explains it in simple English, flags risky clauses, and shows what happens if you sign, delay or cancel.</p>
-<div class="cta"><a class="btn xl" href="#login">Get started free →</a><a class="btn o xl" href="#about">See how it works</a></div>
-<div class="tick"><span>✓ No legal jargon</span><span>✓ Masks Aadhaar &amp; PAN</span><span>✓ Results in under a minute</span></div></div>
-<div class="card"><div class="score"><div class="ring" style="--v:62"><b>62</b></div><div><div style="font-weight:700;font-size:18px">Signability Score</div><div style="color:var(--am);font-weight:700">CAUTION</div><div style="margin-top:6px"><span class="tg r">2 high-risk</span> <span class="tg a">4 attention</span> <span class="tg g">12 normal</span></div></div></div>
-<div class="cl">🔴 ₹25,000 cancellation penalty</div><div class="cl">🟡 60-day notice period</div><div class="cl">🟡 Auto-renews after 1 year</div><div class="cl">🔴 Employer owns your work</div>
-<div class="nt" style="margin-top:12px">Exposure ₹45,000 · Longest commitment 24 months</div></div></div></section>
+<span class="pill">Private, plain-English document review</span>
+<h1>Know what you’re signing before you sign it.</h1>
+<p class="lead">Upload a rent agreement, job offer, loan paper or legal notice. DocuClear explains each clause in simple English, marks the risky ones, and shows what happens if you sign, delay or cancel.</p>
+<div class="cta"><a class="btn xl" href="login.html">Upload a document</a><a class="btn o xl" href="about.html">How it works</a></div>
+<div class="tick"><span>✓ No legal jargon</span><span>✓ Masks Aadhaar and PAN</span><span>✓ First answer in under a minute</span></div></div>
+<div class="isow"><div class="iso"><div class="stage">
+<div class="ly l1"><i class="tt"></i><i class="ln"></i></div>
+<div class="ly l2"><span class="hb" style="top:100px;width:62%;background:var(--hl)"></span><span class="hb" style="top:160px;width:78%;background:#c6282899"></span><span class="hb" style="top:240px;width:52%;background:var(--hl)"></span><span class="hb" style="top:300px;width:68%;background:#c6282899"></span></div>
+<div class="ly l3"><span class="nc" style="top:78px">Notice period: 60 days</span><span class="nc r" style="top:138px">Early exit fee: ₹25,000</span><span class="nc" style="top:218px">Renews automatically</span><span class="nc r" style="top:278px">Employer owns your work</span><span class="bd">62</span></div>
+</div></div>
+<ol class="lgd"><li><b>1</b>Your document</li><li><b>2</b>Risky clauses marked</li><li><b>3</b>Plain-English notes</li></ol></div>
+</div></section>
 
 <div class="w"><div class="stats"><div><b>16</b><span>document types</span></div><div><b>&lt; 60s</b><span>to your first explanation</span></div><div><b>5</b><span>key things before you sign</span></div><div><b>100%</b><span>sensitive data maskable</span></div></div></div>
 
@@ -86,7 +43,7 @@ input[type=text],input[type=email],input[type=password],select,textarea{width:10
 
 <section class="sec"><div class="w"><div class="t"><div class="eb">Supported documents</div><h2>Built for the paperwork that matters</h2></div><div class="chips" id="types"></div></div></section>
 
-<section class="sec" style="padding-top:0"><div class="w"><div class="dk two" style="align-items:center"><div><div class="eb" style="color:#a5b4fc">Privacy first</div><h2>Your Aadhaar and PAN never need to reach the AI</h2><p>Run a Privacy Scan on every upload. Pick “Mask sensitive information” and only the sanitized version is processed.</p><a class="btn" href="#login" style="background:#fff;color:#312e81">Try it now</a></div>
+<section class="sec" style="padding-top:0"><div class="w"><div class="dk two" style="align-items:center"><div><div class="eb" style="color:#a5b4fc">Privacy first</div><h2>Your Aadhaar and PAN never need to reach the AI</h2><p>Run a Privacy Scan on every upload. Pick “Mask sensitive information” and only the sanitized version is processed.</p><a class="btn" href="login.html" >Try it now</a></div>
 <div class="mk">Name: Rohan Mehta<br>Aadhaar: <s>4821 9034 7712</s> → <u>XXXX XXXX 7712</u><br>PAN: <s>ABCPM1234K</s> → <u>XXXXX1234X</u><br>Phone: <s>9876543210</s> → <u>XXXXXX3210</u><br>Email: <s>rohan@mail.com</s> → <u>r***@mail.com</u></div></div></div></section>
 
 <section class="sec" style="padding-top:0"><div class="w" style="max-width:780px"><div class="t"><div class="eb">FAQ</div><h2>Questions, answered</h2></div>
@@ -95,104 +52,16 @@ input[type=text],input[type=email],input[type=password],select,textarea{width:10
 <details><summary>Which files can I upload?</summary><p>PDFs, photos/scans (JPG, PNG) and text files.</p></details>
 <details><summary>Can I compare two documents?</summary><p>Yes. Cross-document checks catch mismatches, such as an offer letter that says ₹8 LPA while the agreement says ₹6.5 LPA.</p></details></div></section>
 
-<section class="sec" style="padding-top:0"><div class="w"><div class="dk" style="text-align:center;background:linear-gradient(135deg,#3730a3,#6d28d9)"><h2>Stop signing things you don’t understand</h2><p style="color:#ddd6fe">Log in and upload your first document in under a minute.</p><a class="btn xl" href="#login" style="background:#fff;color:#3730a3">Log in to upload</a></div></div></section>
-</div>
-
-<div data-p="about" class="hide">
-<div class="w ph"><div class="eb">About us</div><h1>Legal and financial language shouldn’t need a lawyer to decode</h1><p>Most people sign agreements, accept terms and pay bills without fully understanding them. DocuClear exists to change that.</p></div>
-<div class="w" style="padding-bottom:40px"><div class="three">
-<div class="card"><div class="ib">🎯</div><h3>Our mission</h3><p>Give everyone the clarity that used to cost a consultation: plain English, in seconds.</p></div>
-<div class="card"><div class="ib">🔒</div><h3>Privacy by design</h3><p>Sensitive details can be masked before any AI sees your document.</p></div>
-<div class="card"><div class="ib">⚖️</div><h3>Education, not advice</h3><p>We explain and highlight. We don’t replace lawyers, doctors or financial advisors.</p></div></div>
-<div class="t" style="margin-top:64px"><h2>What makes us different</h2></div><div class="two" id="diff"></div>
-<div class="card" style="margin-top:48px;max-width:640px;margin-inline:auto"><h3>Contact us</h3><label class="k">Email</label><input type="email" id="cE" placeholder="you@example.com"><label class="k">Message</label><textarea id="cM" rows="4" placeholder="How can we help?"></textarea><div class="err" id="cR"></div><button class="btn" id="cB">Send message</button></div></div></div>
-
-<div data-p="pricing" class="hide"><div class="w ph"><div class="eb">Pricing</div><h1>Simple plans that grow with you</h1><p>Start free. Upgrade when you need more documents and deeper checks.</p></div>
-<div class="w" style="padding-bottom:40px"><div class="three" style="align-items:stretch">
-<div class="card price"><h3>Free</h3><div class="am">₹0</div><ul><li>3 documents / month</li><li>Before You Sign summary</li><li>Privacy Scan</li></ul><a class="btn o w100" href="#login">Start free</a></div>
-<div class="card price hot"><h3>Pro</h3><div class="am">₹299<small style="font-size:15px;color:var(--mu);font-weight:500"> /mo</small></div><ul><li>Unlimited documents</li><li>Life Impact Simulator &amp; What-If</li><li>Cross-document checks</li><li>Manipulation detection</li><li>Personal Risk Dashboard</li></ul><a class="btn w100" href="#login">Go Pro</a></div>
-<div class="card price"><h3>Teams</h3><div class="am">Custom</div><ul><li>Shared workspace</li><li>Priority support</li><li>Custom document types</li></ul><a class="btn o w100" href="#about">Contact us</a></div></div></div></div>
-
-<div data-p="login" class="hide"><div class="auth"><div class="aside"><h2>Know exactly what you’re agreeing to.</h2><ul><li>✓ Plain-English explanations</li><li>✓ Risk rating before you sign</li><li>✓ Rupee impact of every penalty</li><li>✓ Sensitive data masked first</li></ul></div>
-<div class="af"><div><h2 id="aT">Welcome back</h2><p class="nt" id="aS">Log in to upload and analyze your documents.</p>
-<button class="btn o w100" id="aG">Continue with Google</button><div class="or">or use email</div>
-<div id="nb" class="hide"><label class="k">Full name</label><input type="text" id="aN" placeholder="Your name"></div>
-<label class="k">Email</label><input type="email" id="aE" placeholder="you@example.com"><label class="k">Password</label><input type="password" id="aP" placeholder="At least 6 characters">
-<div id="tm" class="chk hide"><input type="checkbox" id="aC"> I agree to the Terms &amp; Privacy Policy</div>
-<div class="err" id="aR"></div><button class="btn w100" id="aB">Log in</button>
-<div class="sw" id="fg"><a id="aF">Forgot password?</a></div><div class="sw"><span id="aL">New here?</span> <a id="aTg">Create an account</a></div></div></div></div></div>
-
-<div data-p="home" class="hide"><div class="wk">
-<div class="side"><button class="on" data-v="up">📤 Upload &amp; analyze</button><button data-v="db">📊 My dashboard</button><button data-v="ac">👤 Account</button></div>
-<div class="main"><h2 id="hi"></h2>
-<div data-v="up"><div class="card" id="upc"><h3>Upload your document</h3><p class="nt">Step 1 of 2. Choose the type, add your file, then run the privacy scan.</p>
-<label class="k">Document type</label><select id="dt"></select>
-<div class="drop" id="drop"><div style="font-size:34px">📄</div><b>Drag &amp; drop your document here</b><div class="nt">or click to browse · PDF, JPG, PNG, TXT</div><div id="fn" style="margin-top:10px;font-weight:600;color:var(--pr)"></div></div>
-<input type="file" id="file" class="hide" accept=".pdf,.jpg,.jpeg,.png,.txt">
-<label class="chk"><input type="checkbox" id="mask" checked> 🔒 Mask Aadhaar, PAN, phone and email before analysis</label><div id="ps" class="nt" style="margin-top:8px"></div>
-<button class="btn xl" id="go" style="margin-top:18px">Analyze document</button><div class="bar hide" id="bar"><i></i></div></div>
-<div id="res" class="hide"><div class="two"><div class="card"><h3>Should I sign this?</h3><div class="score"><div class="ring" style="--v:62"><b>62</b></div><div><div style="font-weight:700;color:var(--am)">CAUTION</div><span class="tg r">2 high-risk</span> <span class="tg a">4 attention</span> <span class="tg g">12 normal</span><div class="nt" style="margin-top:6px">Exposure ₹45,000 · Commitment 24 months</div></div></div><p class="nt" style="margin-top:14px">File: <b id="rn"></b></p><button class="btn o" id="again">Analyze another</button></div>
-<div class="card"><h3>Life Impact Simulator</h3><div class="nt">Late fee: 2% per month on ₹50,000</div><label class="k" id="ml"></label><input type="range" id="mo" min="1" max="12" value="3"><div id="sim" style="margin-top:8px"></div></div></div>
-<div class="two" style="margin-top:18px"><div class="card"><h3>Before you sign, understand these 5 things</h3><div class="nt" style="margin-bottom:10px">Tap any item for “Explain this to me”.</div><div id="five"></div></div>
-<div class="card"><h3>What happens if I…</h3><div class="tabs" id="tabs"></div><div id="wi"></div></div></div>
-<div class="two" style="margin-top:18px"><div class="card"><h3>🧩 Cross-document check</h3><div class="al r">⚠️ Offer letter says <b>₹8 LPA</b>, agreement says <b>₹6.5 LPA</b>.</div><div class="al a">⚠️ Notice period differs: 30 days vs 60 days.</div></div>
-<div class="card"><h3>🕵️ Manipulation check</h3><div class="al a">Inconsistent font on page 3, clause 7.</div><div class="al a">Date mismatch: signed 12 May, stamped 21 May.</div></div></div>
-<p class="nt" style="margin-top:16px">Sample output for demonstration. DocuClear explains documents and is not legal advice.</p></div></div>
-<div data-v="db" class="hide"><div class="kp" id="kp"></div><div class="card"><h3>My documents</h3><div style="overflow-x:auto"><table><thead><tr><th>Document</th><th>Type</th><th>Risk</th><th>Next deadline</th></tr></thead><tbody id="tb"></tbody></table></div></div></div>
-<div data-v="ac" class="hide"><div class="card" style="max-width:520px"><h3>Account</h3><p id="acI"></p><p class="nt">Sign-in will be handled by Firebase Authentication.</p><button class="btn o" id="out2">Log out</button></div></div>
-</div></div></div>
+<section class="sec" style="padding-top:0"><div class="w"><div class="dk" style="text-align:center"><h2>Stop signing things you don’t understand</h2><p>Log in and upload your first document in under a minute.</p><a class="btn xl" href="login.html">Log in to upload</a></div></div></section>
 </main>
-<footer><div class="w"><div class="fcols"><div><div class="logo" style="color:#fff;margin-bottom:12px"><span class="lg">✦</span>DocuClear</div><p>Plain-English explanations for the documents that shape your life.</p></div>
-<div><h4>Product</h4><a href="#pricing">Pricing</a><a href="#login">Log in</a><a href="#home">Workspace</a></div><div><h4>Company</h4><a href="#about">About</a><a href="#about">Contact</a></div><div><h4>Legal</h4><a>Terms</a><a>Privacy</a></div></div>
+
+<footer><div class="w"><div class="fcols"><div><div class="logo" style="color:#fff;margin-bottom:12px"><span class="lg"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 3h16l8 8v24a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" fill="currentColor"/><path d="M25 3v6a2 2 0 0 0 2 2h6z" fill="var(--g)" opacity=".35"/><rect x="11" y="14" width="13" height="3" rx="1.5" fill="var(--g)" opacity=".6"/><rect x="11" y="20" width="9" height="3" rx="1.5" fill="var(--g)" opacity=".6"/><circle cx="29.5" cy="29.5" r="9.5" fill="#c8f169"/><path d="M24.8 29.8l3.3 3.3 6.2-6.9" fill="none" stroke="#1d0f33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>DocuClear</div><p>Plain-English explanations for the documents that shape your life.</p></div>
+<div><h4>Product</h4><a href="pricing.html">Pricing</a><a href="login.html">Log in</a><a href="workspace.html">Workspace</a></div><div><h4>Company</h4><a href="about.html">About</a><a href="about.html">Contact</a></div><div><h4>Legal</h4><a>Terms</a><a>Privacy</a></div></div>
 <div class="fb">© 2026 DocuClear. Educational tool, not legal, medical or financial advice.</div></div></footer>
 
-<script>
-var $=function(i){return document.getElementById(i)},U=null;try{U=JSON.parse(localStorage.getItem("dc_user")||"null")}catch(e){}
-var TY=[["🏠","Rent/PG agreements","Deposit, notice, penalties"],["💼","Job offer letters","Salary, bond, non-compete"],["🎓","College documents","Fees, scholarships, hostel"],["🏦","Bank/loan documents","EMI, interest, fees"],["🛡️","Insurance policies","Coverage, exclusions"],["📱","Terms & Conditions","What you agree to"],["💳","Credit-card agreements","Charges, hidden terms"],["🛒","Warranty documents","What’s covered, how to claim"],["🚗","Vehicle documents","Insurance, expiry dates"],["📜","Government notices","Simple instructions"],["🧾","Bills & invoices","Duplicate or odd charges"],["💰","Tax documents","Deductions, deadlines"],["🩺","Medical documents","Terms explained (education only)"],["✈️","Travel documents","Visa, baggage, cancellation"],["📦","Return/refund policies","Are you still in the window?"],["🤝","Freelance agreements","Payment, IP, termination"]];
-var FE=[["🚦","Before You Sign","Green, amber or red rating plus the 5 things to understand first."],["⭐","Signability Score","A 0–100 score with risky clause counts, exposure and commitment length."],["🧮","Life Impact Simulator","See the rupee impact of delays, penalties and early exit."],["🔮","What-If Predictions","What happens if you sign, cancel, delay or don’t comply."],["🧩","Cross-Document Check","Catch mismatched salaries, deposits, names and dates across files."],["🕵️","Manipulation Detection","Flags edited text, odd fonts, altered amounts and missing pages."],["🔒","Privacy Scan","Mask Aadhaar, PAN, bank, phone and email before analysis."],["📊","Personal Risk Dashboard","All documents, deadlines and exposure in one place."]];
-var FI=[["🔴","₹25,000 cancellation penalty","Leaving early costs a fixed ₹25,000. Ask if it can be reduced or waived after a minimum period."],["🟡","60-day notice period","You must give two months’ written notice before leaving."],["🟡","Automatic renewal after 1 year","It renews unless you cancel in writing. Set a reminder 30 days before."],["🔴","Employer owns work created during employment","Even work done in your free time may belong to the company. Ask to exclude personal projects."],["🟡","Disputes go to arbitration","You can’t go to court first; a private arbitrator decides."]];
-var WI={"Sign":["You’re bound for 24 months.","Auto-renewal applies after year 1.","Employer owns IP created during the term."],"Cancel":["Give 60 days’ written notice.","₹25,000 fee applies in the first year.","Return company property to avoid deductions."],"Delay":["2% monthly penalty applies.","3 months late on ₹50,000 adds ₹3,000.","Repeated delays can count as breach."],"Don’t comply":["May count as breach and trigger termination.","Penalties or a legal notice may follow.","Dispute goes to arbitration."]};
-var DOCS=[["Rent Agreement – Koramangala","Rent/PG agreement","r","Notice by 15 Nov"],["Offer Letter – TechCorp","Job offer letter","a","Accept by 5 Nov"],["Health Insurance Policy","Insurance policy","g","Renews 2 Jan"]];
-$("feats").innerHTML=FE.map(function(f){return'<div class="card"><div class="ib">'+f[0]+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p></div>'}).join("");
-$("types").innerHTML=TY.map(function(t){return'<div>'+t[0]+' '+t[1]+'<small>'+t[2]+'</small></div>'}).join("");
-$("dt").innerHTML=TY.map(function(t){return'<option>'+t[0]+' '+t[1]+'</option>'}).join("");
-$("diff").innerHTML=FE.slice(0,6).map(function(f){return'<div class="card"><h3>'+f[0]+' '+f[1]+'</h3><p>'+f[2]+'</p></div>'}).join("");
-$("five").innerHTML=FI.map(function(f,i){return'<div class="itm"><span>'+f[0]+'</span><div><b>'+(i+1)+'. '+f[1]+'</b><div class="ex"><b>Explain this to me:</b> '+f[2]+'</div></div></div>'}).join("");
-$("five").onclick=function(e){var n=e.target.closest(".itm");if(n)n.classList.toggle("open")};
-$("tabs").innerHTML=Object.keys(WI).map(function(k,i){return'<button class="'+(i?"":"on")+'">'+k+'</button>'}).join("");
-function wi(k){$("wi").innerHTML="<ul style='margin:0;padding-left:20px'>"+WI[k].map(function(x){return"<li>"+x+"</li>"}).join("")+"</ul>"}wi("Sign");
-$("tabs").onclick=function(e){if(e.target.tagName!="BUTTON")return;[].forEach.call($("tabs").children,function(b){b.classList.remove("on")});e.target.classList.add("on");wi(e.target.textContent)};
-function sim(){var m=+$("mo").value,p=Math.round(1000*m),f=function(n){return"₹"+n.toLocaleString("en-IN")};$("ml").textContent="If you delay payment by "+m+" month"+(m>1?"s":"");$("sim").innerHTML="Original amount: <b>₹50,000</b><br>Estimated penalty: <b style='color:var(--rd)'>"+f(p)+"</b><br>Total payable: <b>"+f(50000+p)+"</b>"}$("mo").oninput=sim;sim();
-$("cB").onclick=function(){$("cR").textContent=/^\S+@\S+\.\S+$/.test($("cE").value)&&$("cM").value.trim()?"Thanks! We’ll get back to you soon.":"Enter a valid email and a message."};
-// Auth (mock; replace with Firebase)
-var su=false;
-function mode(){$("aT").textContent=su?"Create your account":"Welcome back";$("aS").textContent=su?"Sign up to start understanding your documents.":"Log in to upload and analyze your documents.";$("aB").textContent=su?"Sign up":"Log in";$("nb").classList.toggle("hide",!su);$("tm").classList.toggle("hide",!su);$("fg").classList.toggle("hide",su);$("aL").textContent=su?"Already have an account?":"New here?";$("aTg").textContent=su?"Log in":"Create an account";$("aR").textContent=""}
-$("aTg").onclick=function(){su=!su;mode()};
-$("aF").onclick=function(){$("aR").textContent="Password reset will be available once Firebase is connected."};
-function login(u){U=u;try{localStorage.setItem("dc_user",JSON.stringify(u))}catch(e){}location.hash="home";route()}
-$("aB").onclick=function(){var e=$("aE").value.trim();if(!/^\S+@\S+\.\S+$/.test(e))return $("aR").textContent="Enter a valid email address.";if($("aP").value.length<6)return $("aR").textContent="Password must be at least 6 characters.";if(su&&!$("aC").checked)return $("aR").textContent="Please accept the Terms to continue.";
- /* TODO Firebase: signInWithEmailAndPassword / createUserWithEmailAndPassword */login({email:e,name:$("aN").value.trim()||e.split("@")[0]})};
-$("aG").onclick=function(){/* TODO Firebase: signInWithPopup(GoogleAuthProvider) */login({email:"demo@docuclear.in",name:"Demo User"})};
-function out(){U=null;try{localStorage.removeItem("dc_user")}catch(e){}location.hash="";route()}$("nOut").onclick=out;$("out2").onclick=out;
-// Workspace
-document.querySelector(".side").onclick=function(e){var v=e.target.getAttribute("data-v");if(!v)return;[].forEach.call(this.children,function(b){b.classList.toggle("on",b===e.target)});[].forEach.call(document.querySelectorAll(".main>[data-v]"),function(s){s.classList.toggle("hide",s.getAttribute("data-v")!==v)})};
-var F=null;$("drop").onclick=function(){$("file").click()};
-["dragover","dragenter"].forEach(function(n){$("drop").addEventListener(n,function(e){e.preventDefault();$("drop").classList.add("hv")})});
-["dragleave","drop"].forEach(function(n){$("drop").addEventListener(n,function(e){e.preventDefault();$("drop").classList.remove("hv")})});
-$("drop").addEventListener("drop",function(e){pick(e.dataTransfer.files[0])});$("file").onchange=function(){pick(this.files[0])};
-function pick(f){if(!f)return;F=f;$("fn").textContent="✅ "+f.name;$("ps").textContent="";
- if(/\.txt$/i.test(f.name)){var r=new FileReader();r.onload=function(){var t=String(r.result),m=function(x){return(t.match(x)||[]).length};$("ps").textContent="🔒 Privacy Scan → Aadhaar: "+m(/\b\d{4}\s?\d{4}\s?\d{4}\b/g)+" · PAN: "+m(/\b[A-Z]{5}\d{4}[A-Z]\b/g)+" · Phone: "+m(/\b[6-9]\d{9}\b/g)+" · Email: "+m(/[\w.+-]+@[\w-]+\.[\w.]+/g)+($("mask").checked?" (will be masked)":"")};r.readAsText(f)}else $("ps").textContent="🔒 Privacy Scan runs after text extraction (OCR) for this file type."}
-$("go").onclick=function(){if(!F){$("fn").textContent="Please choose a file first.";return}$("bar").classList.remove("hide");var i=$("bar").firstChild,w=0,t=setInterval(function(){w+=10;i.style.width=w+"%";if(w>=100){clearInterval(t);$("rn").textContent=F.name;$("upc").classList.add("hide");$("res").classList.remove("hide");$("bar").classList.add("hide");i.style.width="0";DOCS.unshift([F.name,$("dt").value.replace(/^\S+\s/,""),"r","Notice by 30 Nov"]);dash()}},130)};
-$("again").onclick=function(){F=null;$("fn").textContent="";$("ps").textContent="";$("res").classList.add("hide");$("upc").classList.remove("hide")};
-function dash(){var rk=DOCS.filter(function(d){return d[2]=="r"}).length,at=DOCS.filter(function(d){return d[2]=="a"}).length;
- $("kp").innerHTML=[["🔴",rk,"High-risk documents"],["🟡",at,"Need attention"],["📅",DOCS.length,"Deadlines approaching"],["💰","₹"+(35000+rk*10000).toLocaleString("en-IN"),"Potential exposure"]].map(function(s){return"<div><b>"+s[0]+" "+s[1]+"</b><span>"+s[2]+"</span></div>"}).join("");
- var L={r:["r","High risk"],a:["a","Attention"],g:["g","Safe"]};$("tb").innerHTML=DOCS.map(function(d){return"<tr><td><b>"+d[0].replace(/</g,"&lt;")+"</b></td><td>"+d[1]+'</td><td><span class="tg '+L[d[2]][0]+'">'+L[d[2]][1]+"</span></td><td>"+d[3]+"</td></tr>"}).join("")}dash();
-// Router
-function route(){var h=location.hash.replace("#","");if(["about","pricing","login","home"].indexOf(h)<0)h="";
- if(h=="home"&&!U){location.hash="login";return}if(h=="login"&&U){location.hash="home";return}
- [].forEach.call(document.querySelectorAll("[data-p]"),function(s){s.classList.toggle("hide",s.getAttribute("data-p")!==h)});
- [].forEach.call(document.querySelectorAll("nav a.l"),function(a){a.classList.toggle("on",a.getAttribute("data-r")===h)});
- $("nLogin").classList.toggle("hide",!!U);$("nOut").classList.toggle("hide",!U);
- if(U){$("hi").textContent="Hello, "+U.name+" 👋";$("acI").innerHTML="<b>"+U.name.replace(/</g,"&lt;")+"</b><br>"+U.email.replace(/</g,"&lt;")}window.scrollTo(0,0)}
-window.addEventListener("hashchange",route);route();
-</script></body></html>
+<script src="js/firebase-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
