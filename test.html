@@ -1,0 +1,18 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>DocuClear connection test</title>
+<style>body{font:16px/1.6 system-ui;max-width:760px;margin:30px auto;padding:0 16px}pre{background:#f3eefa;padding:12px;border-radius:8px;white-space:pre-wrap;word-break:break-word}.ok{color:#1b7a43}.bad{color:#c62828}button{font:inherit;padding:10px 18px;border-radius:8px;border:0;background:#4b1f7e;color:#fff;cursor:pointer}</style></head><body>
+<h2>DocuClear connection test</h2><p>Open this at <b>http://localhost:8000/test.html</b>, click the button, and send me everything shown below.</p>
+<button id="b">Run test</button><pre id="o">Not run yet.</pre>
+<script src="js/api-config.js"></script><script src="js/local-config.js"></script>
+<script>
+var o=document.getElementById("o");function p(t,c){o.innerHTML+="\n<span class='"+(c||"")+"'>"+String(t).replace(/</g,"&lt;")+"</span>"}
+document.getElementById("b").onclick=function(){o.textContent="";
+ p("Page address: "+location.href);
+ p(window.GROQ_KEY?"Key loaded from js/local-config.js: "+window.GROQ_KEY.slice(0,7)+"… ("+window.GROQ_KEY.length+" characters)":"No key loaded (js/local-config.js missing or wrong).",window.GROQ_KEY?"ok":"bad");
+ p("DC_API: "+(window.DC_API||"(empty)"));
+ if(!window.GROQ_KEY)return;
+ fetch("https://api.groq.com/openai/v1/models",{headers:{Authorization:"Bearer "+window.GROQ_KEY}}).then(function(r){return r.text().then(function(t){p("Models request: HTTP "+r.status,r.ok?"ok":"bad");
+  try{var ids=JSON.parse(t).data.map(function(m){return m.id});p("Models available to your key:\n"+ids.join("\n"))}catch(e){p("Reply was not JSON. It began: "+t.slice(0,150),"bad")}})})
+ .then(function(){return fetch("https://api.groq.com/openai/v1/chat/completions",{method:"POST",headers:{Authorization:"Bearer "+window.GROQ_KEY,"Content-Type":"application/json"},body:JSON.stringify({model:window.GROQ_TEXT_MODEL||"llama-3.3-70b-versatile",messages:[{role:"user",content:"Reply with JSON: {\"ok\":true}"}],response_format:{type:"json_object"}})})})
+ .then(function(r){return r.text().then(function(t){p("Chat test: HTTP "+r.status,r.ok?"ok":"bad");p("Raw reply: "+t.slice(0,300))})})
+ .catch(function(e){p("Network error: "+e.message,"bad")})};
+</script></body></html>

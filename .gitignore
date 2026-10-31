@@ -1,0 +1,15 @@
+@"
+# API keys and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+build/
+"@ | Set-Content -Encoding utf8 .gitignore
+# Local API configuration
+js/local-config.js.js

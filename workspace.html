@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My workspace – DocuClear</title>
+<meta name="description" content="Upload and analyze your documents.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/pro3d.css">
+</head>
+
+<body data-guard="auth">
+
+<header>
+<div class="w">
+<nav>
+<a class="logo" href="index.html">
+<span class="lg">
+<svg viewBox="0 0 40 40" aria-hidden="true">
+<path d="M9 3h16l8 8v24a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" fill="currentColor"/>
+<path d="M25 3v6a2 2 0 0 0 2 2h6z" fill="var(--g)" opacity=".35"/>
+<rect x="11" y="14" width="13" height="3" rx="1.5" fill="var(--g)" opacity=".6"/>
+<rect x="11" y="20" width="9" height="3" rx="1.5" fill="var(--g)" opacity=".6"/>
+<circle cx="29.5" cy="29.5" r="9.5" fill="#c8f169"/>
+<path d="M24.8 29.8l3.3 3.3 6.2-6.9" fill="none" stroke="#1d0f33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+DocuClear
+</a>
+<a class="l h" href="index.html">Home</a>
+<a class="l h" href="about.html">About</a>
+<a class="l h" href="pricing.html">Pricing</a>
+<a class="l on" href="workspace.html">My Workspace</a>
+<a class="btn" id="nLogin" href="login.html" style="margin-left:8px">Log in</a>
+<button class="btn o hide" id="nOut" style="margin-left:8px">Log out</button>
+</nav>
+</div>
+</header>
+
+<main>
+<div class="wk">
+
+<div class="side">
+<button class="on" data-v="up">📤 Upload &amp; analyze</button>
+<button data-v="db">📊 My dashboard</button>
+<button data-v="ac">👤 Account</button>
+</div>
+
+<div class="main">
+<h2 id="hi"></h2>
+
+<div data-v="up">
+<div class="card" id="upc">
+<h3>Upload your document</h3>
+<p class="nt">Step 1 of 2. Choose the type, add your file, then run the privacy scan.</p>
+
+<label class="k">Document type</label>
+<select id="dt"></select>
+
+<label class="k">Explain in my language</label>
+<select id="lg"></select>
+
+<p class="nt" style="margin-top:6px">
+The document can be in any language (for example Bengali). We detect it and explain it in the language you choose here (for example Kannada).
+</p>
+
+<div class="drop" id="drop">
+<div style="font-size:34px">📄</div>
+<b>Drag &amp; drop your document here</b>
+<div class="nt">or click to browse · PDF, JPG, PNG, TXT</div>
+<div id="fn" style="margin-top:10px;font-weight:600;color:var(--pr)"></div>
+</div>
+
+<input type="file" id="file" class="hide" accept=".pdf,.jpg,.jpeg,.png,.webp,.txt">
+
+<label class="chk">
+<input type="checkbox" id="mask" checked>
+🔒 Mask Aadhaar, PAN, phone and email before analysis
+</label>
+
+<div id="ps" class="nt" style="margin-top:8px"></div>
+
+<button class="btn xl" id="go" style="margin-top:18px">Analyze document</button>
+<div class="bar hide" id="bar"><i></i></div>
+</div>
+
+<div id="res" class="hide">
+
+<div class="card" style="margin-bottom:18px">
+<div class="sh">
+<h3 id="smh">Summary</h3>
+<div class="a">
+<select id="lg2" aria-label="Language"></select>
+<button class="btn g spk" id="spk">🔊 Read aloud</button>
+<button class="btn o" id="stp">⏹ Stop</button>
+</div>
+</div>
+<p class="smt" id="smt"></p>
+<div class="nt" id="spn"></div>
+</div>
+
+<div class="two">
+
+<div class="card">
+<h3 id="h1">Should I sign this?</h3>
+<div class="score">
+<div class="ring" id="rg" style="--v:62"><b id="rgn">62</b></div>
+<div>
+<div id="vd" style="font-weight:700;color:var(--am)">CAUTION</div>
+<div id="tgs"></div>
+<div class="nt" id="mt" style="margin-top:6px"></div>
+</div>
+</div>
+<p class="nt" style="margin-top:14px">File: <b id="rn"></b></p>
+<button class="btn o" id="again">Analyze another</button>
+</div>
+
+<div class="card">
+<h3>Life Impact Simulator</h3>
+<div class="nt">Late fee: 2% per month on ₹50,000</div>
+<label class="k" id="ml"></label>
+<input type="range" id="mo" min="1" max="12" value="3">
+<div id="sim" style="margin-top:8px"></div>
+</div>
+
+</div>
+
+<div class="two" style="margin-top:18px">
+<div class="card">
+<h3 id="h5">Before you sign, understand these 5 things</h3>
+<div class="nt" id="h5n" style="margin-bottom:10px">Tap any item for “Explain this to me”.</div>
+<div id="five"></div>
+</div>
+
+<div class="card">
+<h3 id="hwi">What happens if I…</h3>
+<div class="tabs" id="tabs"></div>
+<div id="wi"></div>
+</div>
+</div>
+
+<div class="two" id="xtra" style="margin-top:18px">
+<div class="card">
+<h3>🧩 Cross-document check</h3>
+<div class="al r">⚠️ Offer letter says <b>₹8 LPA</b>, agreement says <b>₹6.5 LPA</b>.</div>
+<div class="al a">⚠️ Notice period differs: 30 days vs 60 days.</div>
+</div>
+
+<div class="card">
+<h3>🕵️ Manipulation check</h3>
+<div class="al a">Inconsistent font on page 3, clause 7.</div>
+<div class="al a">Date mismatch: signed 12 May, stamped 21 May.</div>
+</div>
+</div>
+
+<p class="nt" style="margin-top:16px">
+Sample output for demonstration. DocuClear explains documents and is not legal advice.
+</p>
+
+</div>
+</div>
+
+<div data-v="db" class="hide">
+<div class="kp" id="kp"></div>
+<div class="card">
+<h3>My documents</h3>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr><th>Document</th><th>Type</th><th>Risk</th><th>Next deadline</th></tr>
+</thead>
+<tbody id="tb"></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div data-v="ac" class="hide">
+<div class="card" style="max-width:520px">
+<h3>Account</h3>
+<p id="acI"></p>
+<p class="nt">Signed in securely with Firebase Authentication.</p>
+<button class="btn o" id="out2">Log out</button>
+</div>
+</div>
+
+</div>
+</div>
+</main>
+
+<div class="lgm hide" id="lgm" role="dialog" aria-modal="true" aria-labelledby="lgt">
+<div class="card">
+<h3 id="lgt">Choose your language<br>अपनी भाषा चुनें · ನಿಮ್ಮ ಭಾಷೆ ಆರಿಸಿ</h3>
+<p class="nt">We explain your documents, and read them aloud, in this language. You can change it any time.</p>
+<div class="lgg" id="lgg"></div>
+</div>
+</div>
+
+<footer>
+<div class="w">
+<div class="fcols">
+<div>
+<div class="logo" style="color:#fff;margin-bottom:12px">
+<span class="lg">
+<svg viewBox="0 0 40 40" aria-hidden="true">
+<path d="M9 3h16l8 8v24a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3z" fill="currentColor"/>
+<path d="M25 3v6a2 2 0 0 0 2 2h6z" fill="var(--g)" opacity=".35"/>
+<rect x="11" y="14" width="13" height="3" rx="1.5" fill="var(--g)" opacity=".6"/>
+<rect x="11" y="20" width="9" height="3" rx="1.5" fill="var(--g)" opacity=".6"/>
+<circle cx="29.5" cy="29.5" r="9.5" fill="#c8f169"/>
+<path d="M24.8 29.8l3.3 3.3 6.2-6.9" fill="none" stroke="#1d0f33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</span>
+DocuClear
+</div>
+<p>Plain-English explanations for the documents that shape your life.</p>
+</div>
+
+<div>
+<h4>Product</h4>
+<a href="pricing.html">Pricing</a>
+<a href="login.html">Log in</a>
+<a href="workspace.html">Workspace</a>
+</div>
+
+<div>
+<h4>Company</h4>
+<a href="about.html">About</a>
+<a href="about.html">Contact</a>
+</div>
+
+<div>
+<h4>Legal</h4>
+<a>Terms</a>
+<a>Privacy</a>
+</div>
+</div>
+
+<div class="fb">© 2026 DocuClear. Educational tool, not legal, medical or financial advice.</div>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/firebase-config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/lang.js"></script>
+
+<!-- Compatibility bridge -->
+<script>
+(function () {
+  if (!window.LANGS && window.DC_LANGUAGES) {
+    window.LANGS = window.DC_LANGUAGES.map(function (lang) {
+      return [lang.code, lang.native + " — " + lang.name];
+    });
+  }
+
+  if (!window.langInfo && window.DC_LANGUAGES) {
+    window.langInfo = function (code) {
+      var lang = window.DC_LANGUAGES.find(function (item) {
+        return item.code === code;
+      });
+
+      return lang
+        ? [lang.name, lang.native]
+        : ["English", "English"];
+    };
+  }
+
+  // English fallback labels used by workspace.js
+  window.LABELS = window.LABELS || {
+    en: {
+      sum: "Summary",
+      listen: "🔊 Read aloud",
+      stop: "⏹ Stop",
+      h1: "Should I sign this?",
+      hi: "High risk",
+      at: "Needs attention",
+      nm: "Normal",
+      h5: "Before you sign, understand these 5 things",
+      h5n: "Tap any item for Explain this to me.",
+      hw: "What happens if I…",
+      ex: "Explain this to me:",
+      tabs: ["Sign", "Cancel", "Delay", "Don't comply"]
+    }
+  };
+
+  // Stop speech
+  window.dcStop = function () {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+  };
+
+  // Read aloud
+  window.dcSpeak = function (text, lang) {
+    if (!("speechSynthesis" in window) || !text) return;
+
+    window.speechSynthesis.cancel();
+
+    var speech = new SpeechSynthesisUtterance(text);
+    if (lang) speech.lang = lang;
+
+    window.speechSynthesis.speak(speech);
+  };
+})();
+</script>
+
+<script src="js/api-config.js"></script>
+<script src="js/groq-local.js"></script>
+<script src="js/common.js"></script>
+<script src="js/workspace.js"></script>
+<script src="js/tilt.js"></script>
+
+</body>
+</html>
